@@ -9,7 +9,7 @@ spec:
   source:
     type: Git
     git:
-      uri: "https://github.com/sclorg/nodejs-ex"
+      uri: "https://github.com/amanbharti01/nodejs-crud-app"
     contextDir: /
   strategy:
     type: Source
@@ -32,4 +32,5 @@ spec:
         secretReference:
           name: nodejs-ex-01-generic-webhook-secret
     - type: ImageChange
-
+      imageChange: {}
+    - type: ConfigChange
