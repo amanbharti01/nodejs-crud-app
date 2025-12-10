@@ -23,5 +23,13 @@ spec:
       kind: ImageStreamTag
       name: "nodejs-ex-01:latest"
   triggers:
+    - type: GitHub
+      github:
+        secretReference:
+          name: nodejs-ex-01-github-webhook-secret
+    - type: Generic
+      generic:
+        secretReference:
+          name: nodejs-ex-01-generic-webhook-secret
     - type: ImageChange
-    - type: ConfigChange
+
