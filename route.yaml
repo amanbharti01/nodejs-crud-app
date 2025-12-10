@@ -1,0 +1,9 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: nodejs-ex-01
+  labels:
+    app: nodejs-ex-01
+spec:
+  to:
+    kind:
