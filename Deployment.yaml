@@ -1,0 +1,186 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+    alpha.image.policy.openshift.io/resolve-names: '*'
+    app.openshift.io/route-disabled: 'false'
+    app.openshift.io/vcs-ref: ''
+    app.openshift.io/vcs-uri: 'https://github.com/sclorg/nodejs-ex'
+    deployment.kubernetes.io/revision: '2'
+    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"nodejs-ex-01:latest","namespace":"aman-redhat01-dev"},"fieldPath":"spec.template.spec.containers[?(@.name==\"nodejs-ex-01\")].image","paused":false}]'
+    openshift.io/generated-by: OpenShiftWebConsole
+  resourceVersion: '5363942366'
+  name: nodejs-ex-01
+  uid: 1692e7f7-a6f8-4a27-a5f4-8b816210c946
+  creationTimestamp: '2025-12-10T06:08:46Z'
+  generation: 2
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2025-12-10T06:08:46Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:alpha.image.policy.openshift.io/resolve-names': {}
+            'f:app.openshift.io/route-disabled': {}
+            'f:app.openshift.io/vcs-ref': {}
+            'f:app.openshift.io/vcs-uri': {}
+            'f:image.openshift.io/triggers': {}
+            'f:openshift.io/generated-by': {}
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:app.kubernetes.io/component': {}
+            'f:app.kubernetes.io/instance': {}
+            'f:app.kubernetes.io/name': {}
+            'f:app.kubernetes.io/part-of': {}
+            'f:app.openshift.io/runtime': {}
+            'f:app.openshift.io/runtime-version': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:app': {}
+                'f:deployment': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"nodejs-ex-01"}':
+                  .: {}
+                  'f:imagePullPolicy': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":8080,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:protocol': {}
+                  'f:resources': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: openshift-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2025-12-10T06:09:45Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:template':
+            'f:spec':
+              'f:containers':
+                'k:{"name":"nodejs-ex-01"}':
+                  'f:image': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2025-12-10T06:09:49Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:availableReplicas': {}
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+          'f:updatedReplicas': {}
+      subresource: status
+  namespace: aman-redhat01-dev
+  labels:
+    app: nodejs-ex-01
+    app.kubernetes.io/component: nodejs-ex-01
+    app.kubernetes.io/instance: nodejs-ex-01
+    app.kubernetes.io/name: nodejs-ex-01
+    app.kubernetes.io/part-of: nodejs-ex-app
+    app.openshift.io/runtime: nodejs
+    app.openshift.io/runtime-version: 22-minimal-ubi10
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-ex-01
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nodejs-ex-01
+        deployment: nodejs-ex-01
+    spec:
+      containers:
+        - name: nodejs-ex-01
+          image: 'image-registry.openshift-image-registry.svc:5000/aman-redhat01-dev/nodejs-ex-01@sha256:bec518d5958379505b1fd617bf5a8b2620c798066501b9ee69e2ada14f4f47c1'
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 2
+  replicas: 1
+  updatedReplicas: 1
+  readyReplicas: 1
+  availableReplicas: 1
+  conditions:
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2025-12-10T06:09:48Z'
+      lastTransitionTime: '2025-12-10T06:09:48Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2025-12-10T06:09:49Z'
+      lastTransitionTime: '2025-12-10T06:08:46Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "nodejs-ex-01-fb4985cf6" has successfully progressed.
