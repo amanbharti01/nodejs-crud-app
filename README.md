@@ -13,6 +13,5 @@ The application is built using Source-to-Image (S2I) and includes full configura
 
 
 ---
-
 ## 📂 Repository Structure
 
