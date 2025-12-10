@@ -7,7 +7,10 @@ The application is built using Source-to-Image (S2I) and includes full configura
 - Service  
 - Route  
 - ImageStream  
-- BuildConfig  
+- BuildConfig
+
+- Testing CI/CD pipeline...
+
 
 ---
 
