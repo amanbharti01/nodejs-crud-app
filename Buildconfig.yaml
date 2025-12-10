@@ -1,0 +1,27 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: nodejs-ex-01
+  labels:
+    app: nodejs-ex-01
+spec:
+  runPolicy: Serial
+  source:
+    type: Git
+    git:
+      uri: "https://github.com/sclorg/nodejs-ex"
+    contextDir: /
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: "nodejs:22-minimal-ubi10"
+  output:
+    to:
+      kind: ImageStreamTag
+      name: "nodejs-ex-01:latest"
+  triggers:
+    - type: ImageChange
+    - type: ConfigChange
